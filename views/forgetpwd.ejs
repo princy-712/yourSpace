@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Reset Password</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gradient-to-br from-indigo-950 via-zinc-900 to-purple-900 min-h-screen flex items-center justify-center text-white font-sans">
+    <div class="w-full max-w-md p-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl shadow-2xl animate-fadeIn">
+      <div class="text-center mb-6">
+        <h1 class="text-3xl font-bold">Forgot Password? 🔒</h1>
+        <p class="text-white/70 mt-2 text-sm">Verify your account to reset password</p>
+      </div>
+
+      <form action="/forget" method="POST" class="space-y-5">
+        <input
+          type="text"
+          name="username"
+          placeholder="Enter your username"
+           value="<%= typeof username !== 'undefined' ? username : '' %>"
+          required
+          class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-pink-400 transition"
+        />
+        <input
+          type="text"
+          name="age"
+          placeholder="Enter your Date of Birth"
+          onfocus="this.type='date'"
+          onblur="this.type='text'"
+          value="<%= typeof age !== 'undefined' ? age : '' %>"
+          required
+          class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-pink-400 transition"
+        />
+
+        <% if (userFound) { %>
+        <input
+          type="password"
+          name="newPassword"
+          placeholder="Enter new password"
+          required
+          class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+        />
+        <% } %>
+
+        <button
+          type="submit"
+          class="w-full py-3 bg-pink-600 hover:bg-pink-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-pink-500/40 transition"
+        >
+          <%= userFound ? 'Reset Password' : 'Verify Identity' %>
+        </button>
+      </form>
+
+      <div class="text-center mt-6 text-sm text-white/70">
+        <a href="/login" class="text-pink-400 hover:underline">← Back to Login</a>
+      </div>
+
+      <% if (typeof error !== 'undefined') { %>
+        <p class="text-red-400 text-center mt-4"><%= error %></p>
+      <% } %>
+
+      <% if (typeof success !== 'undefined') { %>
+        <p class="text-green-400 text-center mt-4"><%= success %></p>
+      <% } %>
+    </div>
+  </body>
+</html>

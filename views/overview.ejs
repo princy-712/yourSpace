@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Space - Overview</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            animation: {
+              fadeIn: "fadeIn 1s ease-out both",
+            },
+            keyframes: {
+              fadeIn: {
+                "0%": { opacity: 0, transform: "translateY(20px)" },
+                "100%": { opacity: 1, transform: "translateY(0)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-gradient-to-br from-indigo-950 via-zinc-900 to-purple-900 text-white min-h-screen font-sans">
+    <div class="container mx-auto px-6 py-16 animate-fadeIn">
+      <h1 class="text-6xl font-extrabold text-center mb-4 bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-400">
+        ✨ Your Space
+      </h1>
+      <p class="text-center text-xl italic text-white/90 mb-2 tracking-wide">Write it. Feel it. Keep it.</p>
+      <p class="text-center text-lg text-purple-300 mb-12 font-medium">Pieces of your day, saved your way.</p>
+
+      <!-- About the Project -->
+      <section class="mb-20 text-center max-w-4xl mx-auto">
+        <h2 class="text-3xl font-semibold text-pink-400 mb-4">🧠 What is Your Space?</h2>
+        <p class="text-white/90 text-lg leading-relaxed">
+          <strong>Your Space</strong> is a thoughtfully designed digital journaling experience application which is built with <span class="text-blue-400 font-semibold">Node.js, Express, and MongoDB</span>, using secure <span class="text-pink-400 font-semibold">JWT authentication</span> and an elegant interface crafted with <span class="text-purple-300 font-semibold">Tailwind CSS</span>.— a modern take on personal diaries. It empowers you to privately document your feelings, reflect on your journey, and capture life’s daily moments in your own words.
+        </p>      
+      </section>
+
+      <!-- Features Grid -->
+      <section class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+        <div class="bg-white/10 rounded-2xl p-6 border border-white/20 shadow-xl hover:shadow-pink-500/40 transition duration-300">
+          <h2 class="text-2xl font-semibold mb-3 text-pink-300">👤 User Features</h2>
+          <ul class="list-disc list-inside text-white/90 leading-relaxed">
+            <li>Create your personal account with basic details</li>
+            <li>Secure login system with hashed passwords</li>
+            <li>Stay logged in with encrypted JWT authentication</li>
+            <li>Easy recovery via date-of-birth verification</li>
+          </ul>
+        </div>
+
+        <div class="bg-white/10 rounded-2xl p-6 border border-white/20 shadow-xl hover:shadow-purple-400/40 transition duration-300">
+          <h2 class="text-2xl font-semibold mb-3 text-purple-300">📝 Journaling System</h2>
+          <ul class="list-disc list-inside text-white/90 leading-relaxed">
+            <li>Write down thoughts and emotions anytime</li>
+            <li>Track moods and mark favorites with a like button</li>
+            <li>Edit or refine journal entries with ease</li>
+            <li>Delete entries when you feel ready to let go</li>
+          </ul>
+        </div>
+
+        <div class="bg-white/10 rounded-2xl p-6 border border-white/20 shadow-xl hover:shadow-indigo-400/40 transition duration-300">
+          <h2 class="text-2xl font-semibold mb-3 text-indigo-300">🔐 Secure Access</h2>
+          <ul class="list-disc list-inside text-white/90 leading-relaxed">
+            <li>All protected routes are safeguarded by JWT</li>
+            <li>Custom middleware ensures authenticated access</li>
+            <li>No one but you can see your space</li>
+          </ul>
+        </div>
+
+        <div class="bg-white/10 rounded-2xl p-6 border border-white/20 shadow-xl hover:shadow-blue-400/40 transition duration-300">
+          <h2 class="text-2xl font-semibold mb-3 text-blue-300">🌈 Aesthetic Interface</h2>
+          <ul class="list-disc list-inside text-white/90 leading-relaxed">
+            <li>Glassmorphism-inspired layout for modern vibes</li>
+            <li>Responsive design that adapts to every screen</li>
+            <li>Fluid transitions and hover animations</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Call to Action -->
+      <div class="mt-24 text-center">
+        <p class="text-white/70 text-lg">Crafted with love by Princy 💖</p>
+        <a href="/index" class="mt-4 inline-block bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-600 hover:scale-105 transition-transform duration-300 text-white font-semibold py-3 px-8 rounded-xl shadow-lg">Start Writing →</a>
+      </div>
+    </div>
+  </body>
+</html>

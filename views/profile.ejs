@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Profile</title>
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            animation: {
+              fadeIn: "fadeIn 1s ease-out both",
+            },
+            keyframes: {
+              fadeIn: {
+                "0%": { opacity: 0, transform: "translateY(20px)" },
+                "100%": { opacity: 1, transform: "translateY(0)" },
+              },
+            },
+          },
+        },
+      };
+      
+    </script>
+  </head>
+  <body class="bg-gradient-to-br from-indigo-950 via-zinc-900 to-purple-900 min-h-screen text-white font-sans">
+    <div class="container mx-auto px-6 py-10 animate-fadeIn">
+       <!-- Logout Button -->
+      <div class="flex justify-end">
+        <a href="/logout" class="bg-red-500 hover:bg-red-600 text-white font-medium px-4 py-2 rounded-lg transition duration-300 shadow-md">
+          🚪 Logout
+        </a>
+      </div>
+      <!-- Profile Image + Welcome Message Side-by-Side -->
+<div class="mt-10 flex flex-col md:flex-row items-center justify-between gap-6">
+  <!-- Profile + Name Block -->
+  <div class="flex items-center gap-6">
+    <!-- Profile Image -->
+    <div class="w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-4 border-purple-400 shadow-lg">
+      <img src="<%= user.image || '/images/Uploads/default.png' %>" alt="Profile" class="w-full h-full object-cover">
+    </div>
+
+    <!-- Welcome Text -->
+    <div>
+      <h1 class="text-3xl md:text-4xl font-bold">Hello, <span class="text-blue-400"><%= user.name %></span> 🖐</h1>
+      <p class="text-white/70 mt-1">Write in peace. Keep in grace✨</p>
+    </div>
+  </div>
+
+  <!-- Upload Form -->
+  <form action="/profilepic" method="POST" enctype="multipart/form-data" class="flex flex-col md:flex-row items-center gap-3">
+    <input type="file" name="profileImage" accept="image/*" required class="text-white file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-purple-600 file:text-white hover:file:bg-purple-700">
+    <button type="submit" class="bg-purple-600 hover:bg-purple-700 px-5 py-2 rounded-lg text-white font-medium shadow-md transition">Upload</button>
+  </form>
+</div>
+
+
+      <!-- Create Post Form -->
+      <form method="POST" action="/post" class="mt-6 space-y-4">
+        <textarea
+          name="content"
+          placeholder="Let your mind unfold quitely."
+          class="w-full max-w-2xl p-4 h-32 rounded-xl border border-zinc-700 bg-white/10 backdrop-blur-md placeholder-white/50 text-white focus:ring-2 focus:ring-blue-400 outline-none resize-none transition"
+        ></textarea>
+        <div>
+          <input
+            type="submit"
+            value="Create New Post"
+            class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-xl text-white font-semibold shadow-lg hover:shadow-blue-500/30 transition"
+          />
+        </div>
+      </form>
+
+      <!-- Your Posts -->
+      <div class="mt-16">
+        <h2 class="text-2xl font-semibold text-white/90 mb-4">📝 Your Posts</h2>
+
+        <!-- Posts Loop -->
+        <div class="space-y-6">
+          <% user.posts.reverse().forEach(function(post) { %>
+            <div class="max-w-2xl border border-zinc-700 bg-white/10 rounded-2xl p-6 shadow-xl backdrop-blur-md">
+              <h4 class="text-blue-400 font-semibold mb-2">@<%= user.username %></h4>
+
+<p class="text-white/80 text-sm leading-relaxed mb-4">
+  <%= post.content %>
+</p>
+
+<div class="flex gap-6 items-center text-sm  pt-4">
+  <% let isLiked = post.likes.includes(user._id.toString()); %>
+  <form action="/like/<%= post._id %>" method="get" class="like-form">
+    <button type="submit"
+      class="like-btn text-xl transition duration-200"
+      data-liked="<%= isLiked %>"
+      aria-label="Like Button"
+    >
+      <i class="fa-heart <%= isLiked ? 'fas text-red-500' : 'far text-white/70' %>"></i>
+    </button>
+  </form>
+
+  <a href="/edit/<%= post._id %>" class="text-blue-400 hover:underline">Edit</a>
+  <a href="/delete/<%= post._id %>" class="text-red-400 hover:underline">Delete</a>
+</div>
+
+            </div>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
