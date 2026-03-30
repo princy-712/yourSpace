@@ -121,3 +121,19 @@ http://localhost:3000
 **#Add calendar view for past entries**
 
 **#Add mood tracking (emoji-based)**
+<img width="650" height="692" alt="Screenshot 2026-03-30 at 11 49 51 AM" src="https://github.com/user-attachments/assets/cbe4b4ea-9a07-443c-a6f1-bd23afb79342" />
+
+
+<img width="872" height="739" alt="Screenshot 2026-03-30 at 11 50 28 AM" src="https://github.com/user-attachments/assets/37074790-504b-4ba6-b7e7-2e7232ad0364" />
+
+
+
+<img width="1447" height="837" alt="Screenshot 2026-03-30 at 3 34 23 PM" src="https://github.com/user-attachments/assets/31260f4d-a9d4-4b07-a390-d90a097fcff6" />
+
+
+
+
+
+
+
+
